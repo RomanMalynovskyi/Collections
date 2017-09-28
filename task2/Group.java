@@ -79,11 +79,6 @@ public class Group {
         return str;
     }
 
-    private String[] splitingString(String str) {
-        String[] array = str.split(",");
-        return array;
-    }
-
     public ArrayList<Student> sortedByAge(ArrayList<Student> list) {
         Collections.sort(students, new Comparator<Student>() {
             @Override
