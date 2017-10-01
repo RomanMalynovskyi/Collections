@@ -61,19 +61,12 @@ public class Action {
     private List<Map.Entry<Char, Double>> sortByFreaquency(Map<Char, Double> map) {
         Map<Char, Double> map2 = calculateFreaquency(map);
         List<Map.Entry<Char, Double>> list = new ArrayList<>(map2.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<Char, Double>>() {
-            @Override
-            public int compare(Map.Entry<Char, Double> o1, Map.Entry<Char, Double> o2) {
-                return Double.compare(o2.getValue(), o1.getValue());
-            }
-        });
+        Collections.sort(list, (o1, o2) -> Double.compare(o2.getValue(), o1.getValue()));
         return list;
     }
 
     public void printCollection() {
         List<Map.Entry<Char, Double>> list = sortByFreaquency(map);
-        for (Map.Entry<Char, Double> pair : list) {
-            System.out.println(pair.getKey() + " : " + String.format("%.2f", pair.getValue()));
-        }
+        list.forEach(entry -> System.out.println(entry.getKey() + " : " + String.format("%.2f", entry.getValue())));
     }
 }
