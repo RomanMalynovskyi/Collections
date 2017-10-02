@@ -12,14 +12,6 @@ public class Char  {
         this.symbol = symbol;
     }
 
-    public char getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(char symbol) {
-        this.symbol = symbol;
-    }
-
     public int getQuantity() {
         return quantity;
     }
@@ -31,7 +23,7 @@ public class Char  {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass() || this == null) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Char aChar = (Char) o;
 

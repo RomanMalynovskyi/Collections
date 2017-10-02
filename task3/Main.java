@@ -13,7 +13,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        Action action = new Action(new TreeMap<>(new CharComparator()));
+        Action action = new Action(new HashMap<>());
         try {
             action.fillCollection("z://src.doc");
         } catch (IOException e) {

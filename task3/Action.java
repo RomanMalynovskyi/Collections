@@ -13,26 +13,14 @@ public class Action {
         this.map = map;
     }
 
-    public Map<Char, Double> getMap() {
-        return map;
-    }
-
-    public void setMap(Map<Char, Double> map) {
-        this.map = map;
-    }
-
     public char[] getArray() {
         return array;
-    }
-
-    public void setArray(char[] array) {
-        this.array = array;
     }
 
     public void fillCollection(String path) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
         BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-        String s = "";
+        String s;
         while ((s = bufferedReader.readLine()) != null) {
             stringBuilder.append(s);
         }
@@ -51,22 +39,22 @@ public class Action {
         }
     }
 
-    private Map<Char, Double> calculateFreaquency(Map<Char, Double> map) {
+    private Map<Char, Double> calculateFrequency(Map<Char, Double> map) {
         for (Map.Entry<Char, Double> pair : map.entrySet()) {
             pair.setValue((map.get(pair.getKey()) / array.length) * 100);
         }
         return map;
     }
 
-    private List<Map.Entry<Char, Double>> sortByFreaquency(Map<Char, Double> map) {
-        Map<Char, Double> map2 = calculateFreaquency(map);
+    private List<Map.Entry<Char, Double>> sortByFrequency(Map<Char, Double> map) {
+        Map<Char, Double> map2 = calculateFrequency(map);
         List<Map.Entry<Char, Double>> list = new ArrayList<>(map2.entrySet());
         Collections.sort(list, (o1, o2) -> Double.compare(o2.getValue(), o1.getValue()));
         return list;
     }
 
     public void printCollection() {
-        List<Map.Entry<Char, Double>> list = sortByFreaquency(map);
+        List<Map.Entry<Char, Double>> list = sortByFrequency(map);
         list.forEach(entry -> System.out.println(entry.getKey() + " : " + String.format("%.2f", entry.getValue())));
     }
 }
